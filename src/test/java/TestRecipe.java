@@ -152,7 +152,7 @@ public class TestRecipe {
         assertThat(map, hasValue("a")); // содержит значение
         assertThat(map, hasEntry(3, "c")); // содержит запись
         assertThat(array, not(emptyArray()));
-       // assertThat(array, arrayWithSize(3));
+        assertThat(array, arrayWithSize(3));
 
     }
 
