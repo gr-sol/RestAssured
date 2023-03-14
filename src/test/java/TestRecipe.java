@@ -10,6 +10,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.specification.ResponseSpecification;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -76,7 +77,7 @@ public class TestRecipe {
                 .get("api/users?page=2")
                 .prettyPeek();
     }
-
+    @Tag("smoke")
     @Test
         // Извлечение информации из respons, например хедеры
     void Test4() {
