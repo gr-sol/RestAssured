@@ -7,7 +7,7 @@ import java.util.List;
 
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Dat implements Serializable {
+public class Dat  {
 
     @JsonProperty("page")
     public Integer page;

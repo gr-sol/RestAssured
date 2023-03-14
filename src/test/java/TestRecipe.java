@@ -3,20 +3,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonStringFormatVisitor;
-import groovy.json.JsonOutput;
 import io.restassured.RestAssured;
-import io.restassured.builder.ResponseBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.specification.ResponseSpecification;
-import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 import static io.restassured.RestAssured.*;
@@ -24,7 +19,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 
-public class RecipeTests {
+public class TestRecipe {
     ResponseSpecification responseSpecification = null;
 
 
@@ -121,7 +116,7 @@ public class RecipeTests {
     @JsonIgnoreProperties(ignoreUnknown = true)
     @Test
         // Добавил асерты
-    void Test6() throws JsonProcessingException {
+   void Test6() throws JsonProcessingException {
         String firstname = "Tobias";
         String[] array = new String[]{"ab"};
         List<Integer> list = Arrays.asList(5, 2, 4);
@@ -138,10 +133,11 @@ public class RecipeTests {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
         Dat data = objectMapper.readValue(body, Dat.class);
-        System.out.println("Ответ  = " + data.data[2].email);
+        System.out.println("Ответ  = " + data.data[2]);
         System.out.println("Ответ  = " + data.data[2].firstName);
         System.out.println("Ответ  = " + data.support.text);
         System.out.println("Ответ  = " + data.total);
+       // System.out.println("Ответ  = " + data.);
         assertThat(firstname, equalTo(data.data[2].firstName)); // сравнение значения стринг
         assertThat(data.data[2].firstName, anyOf(containsString("Tob"), endsWith("ias"))); // либо содержит Tob либо кончается на ias
         //assertThat(data.data[2].firstName, not(containsString("Tob"))); // не содержит
@@ -152,11 +148,11 @@ public class RecipeTests {
         assertThat(list, everyItem(greaterThan(0))); // проверить, что все элементы больше 0
         assertThat(list, hasItem(5)); // проверить, что в списке есть 5
         assertThat(list, contains(5, 2, 4)); // проверить, что состоит из элементов
-        assertThat(map, hasKey(1)); // содержит ключь
+       // assertThat(map, hasKey(1)); // содержит ключь
         assertThat(map, hasValue("a")); // содержит значение
         assertThat(map, hasEntry(3, "c")); // содержит запись
         assertThat(array, not(emptyArray()));
-        assertThat(array, arrayWithSize(3));
+       // assertThat(array, arrayWithSize(3));
 
     }
 

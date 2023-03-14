@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Dat2 implements Serializable {
+public class Dat2 {
 
     @JsonProperty("id")
     public Integer id;
